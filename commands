@@ -1,0 +1,50 @@
+$rails g model Charge uid:string{50} status:integer payment_method:integer amount:decimal error_message:text response:jsonb
+
+Apply to migrate default:
+:uid, limit: 50
+:status, default: 0
+:payment_method, default: 0
+:amount_default: default: 0, null: false
+
+
+$rails db:migrate
+
+$rails db:create
+
+Add gem annotate
+Nos agrega al modelo la documentación.
+
+10:13  Modify class Charge.
+        Values of status:
+        Values of payment_method:
+
+11:57 id generated, don't consecutive.
+    before_create :generate_uid
+
+Up to commit.
+
+13:17 $rails g controller
+
+13:43 create index
+      charges controller
+
+
+15:25 Formulary with bootstrap
+        and add to controller
+
+17:24 Configure bootstrap
+        add to gemfile
+
+$bundle install
+
+18:36 configure bootstrap
+
+Add to github
+
+19:54 Add gem figaro.
+        Store keys
+        Used to generate key in config/application.yml
+
+
+
+

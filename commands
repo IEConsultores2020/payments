@@ -1,4 +1,4 @@
-$rails g model Charge uid:string{50} status:integer payment_method:integer amount:decimal error_message:text response:jsonb
+$rails g model Charge uid:string status:integer payment_method:integer amount:decimal error_message:text response:jsonb
 
 Apply to migrate default:
 :uid, limit: 50
@@ -6,6 +6,8 @@ Apply to migrate default:
 :payment_method, default: 0
 :amount_default: default: 0, null: false
 
+:error_message
+:response
 
 $rails db:migrate
 
@@ -45,6 +47,29 @@ Add to github
         Store keys
         Used to generate key in config/application.yml
 
+Video payu.
+37:59 payu.controller
 
-
+Fields in the form
+video                   payu
+                        customerIP
+                        extOrderID (Nullable)
+merchantId              merchatPosId
+accountId
+description             description
+                        additionalDescription (Nullabee)
+                        visibleDescriptoin (Nullable)
+                        statementDescription (Nullabe)
+referenceCode
+amount                  totalAmount
+                        products[0].name
+                        products[0].unitPrice
+                        products[0].quantity
+taxReturnBase
+currency                currencyCode
+signature               openPayuSignature
+test
+buyerEmail
+responseUrl             notityUrl
+ConfirmationUrl         continueUrl
 

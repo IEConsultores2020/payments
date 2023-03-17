@@ -10,6 +10,9 @@ Apply to migrate default:
 :response
 
 $rails db:migrate
+#Docker.
+docker compose run web rails db:migrate
+
 
 $rails db:create
 

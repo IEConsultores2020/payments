@@ -3,10 +3,10 @@
 # Table name: charges
 #
 #  id             :bigint           not null, primary key
-#  uid            :string(50)
-#  status         :integer          default(0)
-#  payment_method :integer          default(0)
-#  amount         :decimal(, )      default(0.0), not null
+#  uid            :string
+#  status         :integer
+#  payment_method :integer
+#  amount         :decimal(, )
 #  error_message  :text
 #  response       :jsonb
 #  created_at     :datetime         not null

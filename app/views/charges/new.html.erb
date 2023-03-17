@@ -1,0 +1,31 @@
+<h1>New charge</h1>
+
+<%= form_for @charge do |form| %>
+  <% if @charge.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(charge.errors.count, "error") %> prohibited this charge from being saved:</h2>
+
+      <ul>
+        <% charge.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :amount, style: "display: block" %>
+    <%= form.text_field :amount %>
+  </div>
+
+  <div>
+    <%= link_to "Cancel", root_path, class: "btn btn-outline-secondary" %>
+    <%= form.submit "Ir a pagar", class: "btn btn-primary" %>
+  </div>
+<% end %>
+
+<br>
+
+<div>
+  <%= link_to "Back to charges", charges_path %>
+</div>

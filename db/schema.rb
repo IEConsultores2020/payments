@@ -10,15 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_17_033814) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_17_041938) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "charges", force: :cascade do |t|
-    t.string "uid", limit: 50
-    t.integer "status", default: 0
-    t.integer "payment_method", default: 0
-    t.decimal "amount", default: "0.0", null: false
+    t.string "uid"
+    t.integer "status"
+    t.integer "payment_method"
+    t.decimal "amount"
     t.text "error_message"
     t.jsonb "response"
     t.datetime "created_at", null: false

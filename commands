@@ -1,4 +1,4 @@
-$rails g model Charge uid:string status:integer payment_method:integer amount:decimal error_message:text response:jsonb
+$rails g scaffold Charge uid:string status:integer payment_method:integer amount:decimal error_message:text response:jsonb
 
 Apply to migrate default:
 :uid, limit: 50

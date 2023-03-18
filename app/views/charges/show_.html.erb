@@ -1,0 +1,9 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @charge %>
+
+<div>
+  <%= link_to "Back to charges", charges_path %>
+
+  <%= button_to "Destroy this charge", @charge, method: :delete %>
+</div>

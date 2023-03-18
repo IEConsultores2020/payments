@@ -8,7 +8,13 @@ class ChargesController < ApplicationController
 
   # GET /charges/1 or /charges/1.json
   def show
+    @signature = signature(@charge)
   end
+
+  def payu
+    @signature = signature(@charge)
+  end
+
 
   # GET /charges/new
   def new
@@ -19,17 +25,25 @@ class ChargesController < ApplicationController
   def edit
   end
 
+  def get_signature(charge)
+    @signature = signature(charge)
+  end
+  helper_method :get_signature
+
   # POST /charges or /charges.json
   def create
     @charge = Charge.new(charge_params)
-
     respond_to do |format|
       if @charge.save
-        format.html { redirect_to charge_url(@charge), notice: "Charge was successfully created." }
-        format.json { render :show, status: :created, location: @charge }
+        @signature = signature(@charge)
+        puts ">>>>>>>>>>>>>>>>>>>>>>> After render payu. iud #{@charge.uid} signature #{@signature}"
+        #render :payu
+        # format.html { redirect_to charge_url(@charge), notice: "Charge was successfully created." }
+        # format.json { render :show, status: :created, location: @charge }
       else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @charge.errors, status: :unprocessable_entity }
+        render :new
+        # format.html { render :new, status: :unprocessable_entity }
+        # format.json { render json: @charge.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -65,7 +79,14 @@ class ChargesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def charge_params
-      params.require(:charge).permit( :amount)
+      params.require(:charge).permit(:amount)
       #:uid, :status, :payment_method, :error_message, :response
+    end
+
+
+    def signature(charge)
+      #msg = "ApiKey~merchantId~referenceCode~amount~currency"
+      msg = "#{ENV["PAYU_API_KEY"]}~#{ENV["PAYU_MERCHANT_ID"]}~#{charge.uid}~#{charge.amount}~COP"
+      Digest::MD5.hexdigest(msg)
     end
 end

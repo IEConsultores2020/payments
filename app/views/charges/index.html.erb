@@ -6,9 +6,9 @@
   <% @charges.each do |charge| %>
     <%= render charge %>
     <p>
-      <%= link_to "Show this charge", charge %>
+    <%= link_to "View data payment", charge_path(charge), method: :get %>
     </p>
   <% end %>
 </div>
-
+u
 <%= link_to "New charge", new_charge_path %>
